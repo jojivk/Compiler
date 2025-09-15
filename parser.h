@@ -33,5 +33,16 @@ class Parser {
     advance();
     return false;
   }
+  AST *parseCalc();
+  Expr *parseExpr();
+  Expr *parseTerm();
+  Expr *parseFactor();
 
+  public:
+    Parser(Lexer &Lex) : Lex(Lex), HasError(false) {
+      advance();
+    }
+    bool hasError() { return HasError; }
+    AST *parse();
 };
+#endif
